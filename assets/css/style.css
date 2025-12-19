@@ -1,0 +1,172 @@
+/* Import Google Font Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --primary-blue: #0056b3;
+  --bg-light: #f4f7fa;
+  --white: #ffffff;
+  --text-main: #334155;
+  --text-muted: #64748b;
+  --radius: 16px; /* Rounded corners sesuai dokumen */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* =========================================
+   BAGIAN 1: AUTH STYLE (LOGIN & REGISTER)
+   ========================================= */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-card h2 {
+  color: var(--primary-blue);
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* =========================================
+   BAGIAN 2: DASHBOARD LAYOUT (FLOATING)
+   ========================================= */
+
+/* Sidebar Floating [cite: 172] */
+.sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  width: 260px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  z-index: 1000;
+}
+
+/* Header Floating  */
+.header {
+  position: fixed;
+  top: 20px;
+  left: 300px;
+  right: 20px;
+  height: 70px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 999;
+}
+
+/* Main Content: Diberi margin agar tidak tertutup sidebar/header [cite: 170] */
+.main-content {
+  margin-left: 300px;
+  margin-top: 110px;
+  margin-right: 20px;
+  margin-bottom: 100px; /* Jarak untuk footer */
+}
+
+.content-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 70vh;
+}
+
+/* Footer Floating [cite: 176] */
+.footer {
+  position: fixed;
+  bottom: 20px;
+  left: 300px;
+  right: 20px;
+  height: 60px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu & Profile Components */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  border-radius: 12px;
+  margin-bottom: 5px;
+}
+.menu-item.active {
+  background: #eef4ff;
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+.menu-item i {
+  margin-right: 12px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+} /* Lingkaran  */

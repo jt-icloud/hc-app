@@ -1,0 +1,37 @@
+services:
+  # Service Aplikasi Web
+  hc-app:
+    build: .
+    container_name: hc_app_container
+    ports:
+      - "8030:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  # Service Database MySQL
+  db:
+    image: mysql:8.0
+    container_name: hc_db_container
+    restart: always
+    environment:
+      MYSQL_DATABASE: hc_database
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: hc_user
+      MYSQL_PASSWORD: hc_password
+    ports:
+      - "3306:3306"
+
+  # Service phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: hc_pma_container
+    ports:
+      - "8020:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root_password
+    depends_on:
+      - db
