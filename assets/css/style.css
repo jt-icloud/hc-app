@@ -7,8 +7,10 @@
   --white: #ffffff;
   --text-main: #334155;
   --text-muted: #64748b;
-  --radius: 16px; /* Rounded corners sesuai dokumen */
+  --radius: 16px;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --sidebar-width: 260px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -20,6 +22,8 @@ body {
   background-color: var(--bg-light);
   margin: 0;
   color: var(--text-main);
+  overflow-x: hidden;
+  font-size: 14px;
 }
 
 /* =========================================
@@ -65,6 +69,7 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 
 .btn-primary {
@@ -76,32 +81,59 @@ body {
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: #004494;
+  transform: translateY(-2px);
 }
 
 /* =========================================
-   BAGIAN 2: DASHBOARD LAYOUT (FLOATING)
+   BAGIAN 2: DASHBOARD LAYOUT (SCROLLABLE SIDEBAR)
    ========================================= */
 
-/* Sidebar Floating [cite: 172] */
 .sidebar {
   position: fixed;
   top: 20px;
   left: 20px;
   bottom: 20px;
-  width: 260px;
+  width: var(--sidebar-width);
   background: var(--white);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 24px;
-  z-index: 1000;
+  z-index: 1001;
+  transition: var(--transition);
+
+  /* Flexbox agar konten bisa diatur atas-bawah */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Kontainer utama tidak boleh scroll */
 }
 
-/* Header Floating  */
+/* Area Navigasi yang bisa di-scroll */
+.sidebar nav {
+  flex: 1;
+  overflow-y: auto; /* Munculkan scrollbar jika menu banyak */
+  padding-right: 5px;
+  margin-top: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar untuk Sidebar */
+.sidebar nav::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar nav::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
 .header {
   position: fixed;
   top: 20px;
-  left: 300px;
+  left: calc(var(--sidebar-width) + 40px);
   right: 20px;
   height: 70px;
   background: var(--white);
@@ -111,15 +143,16 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  z-index: 999;
+  z-index: 1000;
+  transition: var(--transition);
 }
 
-/* Main Content: Diberi margin agar tidak tertutup sidebar/header [cite: 170] */
 .main-content {
-  margin-left: 300px;
+  margin-left: calc(var(--sidebar-width) + 40px);
   margin-top: 110px;
   margin-right: 20px;
-  margin-bottom: 100px; /* Jarak untuk footer */
+  margin-bottom: 100px;
+  transition: var(--transition);
 }
 
 .content-card {
@@ -130,11 +163,10 @@ body {
   min-height: 70vh;
 }
 
-/* Footer Floating [cite: 176] */
 .footer {
   position: fixed;
   bottom: 20px;
-  left: 300px;
+  left: calc(var(--sidebar-width) + 40px);
   right: 20px;
   height: 60px;
   background: var(--white);
@@ -143,9 +175,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
+  transition: var(--transition);
 }
 
-/* Menu & Profile Components */
+/* Menu Components */
 .menu-item {
   display: flex;
   align-items: center;
@@ -154,6 +188,7 @@ body {
   color: var(--text-main);
   border-radius: 12px;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 .menu-item.active {
   background: #eef4ff;
@@ -169,4 +204,60 @@ body {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-} /* Lingkaran  */
+  border: 2px solid #e2e8f0;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: var(--primary-blue);
+}
+
+/* =========================================
+   BAGIAN 3: RESPONSIVE QUERIES
+   ========================================= */
+
+@media (max-width: 991px) {
+  body {
+    font-size: 13px;
+  }
+  .sidebar {
+    left: -320px;
+    top: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .header,
+  .footer {
+    left: 20px;
+  }
+  .main-content {
+    margin-left: 20px;
+  }
+  .menu-toggle {
+    display: block;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header,
+  .footer {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+  }
+  .main-content {
+    margin-top: 85px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .sidebar.active {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
