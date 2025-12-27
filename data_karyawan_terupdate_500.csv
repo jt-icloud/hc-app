@@ -1,0 +1,501 @@
+NIK,Nama Lengkap,Organization,Position,Level,Status
+EMP0001,Kartika Santoso,Marketing,Komandan Security,Jr. Staff,Active
+EMP0002,Gita Wijaya,Production Planning,Operator Konstruksi,Jr. Staff,Active
+EMP0003,Maman Pratama,Sales 1,Sopir Forklift,Jr. Staff,Inactive
+EMP0004,Hendra Lestari,Plant E,Operator Konstruksi,Supervisor,Active
+EMP0005,Gita Pratama,Finance & Accounting,Teknisi Elektrik,Director,Active
+EMP0006,Joko Purnomo,Internal Control,Komandan Security,Staff Ahli,Active
+EMP0007,Samsul Sari,Sales 2,Manager IT,Foreman,Active
+EMP0008,Tanti Hermawan,Process Engineering,Supervisor,Supervisor,Active
+EMP0009,Samsul Zulkarnain,Internal Control,Manager IT,Director,Active
+EMP0010,Maman Ramadhan,Legal,Operator Mesin,Manager,Active
+EMP0011,Rudi Saputra,Plant D,Supervisor,Jr. Staff,Active
+EMP0012,Lia Pratama,Maintenance,Sopir Forklift,Jr. Staff,Active
+EMP0013,Samsul Zulkarnain,Plant B,Teknisi Elektrik,Staff,Active
+EMP0014,Nina Hidayat,General Affair,Account Receivable,Manager,Active
+EMP0015,Hendra Saputra,Plant B,Sopir Forklift,Manager,Active
+EMP0016,Tanti Hidayat,Human Capital,Sopir Forklift,Supervisor,Active
+EMP0017,Fajar Purnomo,Plant C,Manager IT,Director,Active
+EMP0018,Budi Pratama,Sales Support,Electrical Engineer,Director,Active
+EMP0019,Samsul Hidayat,Sales 1,Account Receivable,Jr. Staff,Active
+EMP0020,Dewi Wijaya,Commercial & Supply Chain,Supervisor,Director,Active
+EMP0021,Budi Purnomo,Production Planning,Electrical Engineer,Jr. Staff,Active
+EMP0022,Eko Santoso,Internal Control,Supervisor,Director,Inactive
+EMP0023,Tanti Hermawan,Internal Control,Supervisor,Foreman,Active
+EMP0024,Gita Sari,General Affair,Komandan Security,Jr. Staff,Active
+EMP0025,Budi Kusuma,Sales 2,Operator Mesin,Foreman,Active
+EMP0026,Joko Wijaya,Information Technology,Operator Mesin,Jr. Staff,Active
+EMP0027,Oki Wijaya,Process Engineering,Sopir Forklift,Foreman,Active
+EMP0028,Fajar Lestari,Process Engineering,Operator Mesin,Staff Ahli,Active
+EMP0029,Andi Wijaya,Quality Assurance & R D,Operator Mesin,Foreman,Active
+EMP0030,Tanti Lestari,Quality Assurance & R D,Manager Accounting,Director,Active
+EMP0031,Siti Nugroho,Sales 1,Teknisi Elektrik,Supervisor,Active
+EMP0032,Samsul Aminah,Facility,Manager IT,Director,Active
+EMP0033,Samsul Nugroho,Internal Control,Manager IT,Jr. Staff,Active
+EMP0034,Samsul Saputra,Plant E,Sopir Forklift,Supervisor,Active
+EMP0035,Gita Lestari,Maintenance,Electrical Engineer,Supervisor,Active
+EMP0036,Kartika Hermawan,Plant B,Account Receivable,Director,Active
+EMP0037,Hendra Ramadhan,Procurement,Teknisi Elektrik,Staff,Active
+EMP0038,Andi Aminah,Plant C,Teknisi Elektrik,Jr. Staff,Inactive
+EMP0039,Budi Saputra,Sales Support,Supervisor,Manager,Active
+EMP0040,Budi Pratama,Sales Support,Manager Accounting,Manager,Active
+EMP0041,Maman Wijaya,Plant E,Operator Konstruksi,Director,Active
+EMP0042,Andi Nugroho,Sales 1,Teknisi Elektrik,Manager,Active
+EMP0043,Joko Wati,Sales 2,Komandan Security,Supervisor,Inactive
+EMP0044,Oki Saputra,Information Technology,Operator Mesin,Staff,Active
+EMP0045,Nina Hidayat,Finance & Accounting,Operator Mesin,Staff,Active
+EMP0046,Andi Saputra,Plant A,Operator Mesin,Jr. Staff,Active
+EMP0047,Gita Sari,Sales Support,Manager IT,Director,Active
+EMP0048,Rudi Saputra,Internal Control,Teknisi Elektrik,Staff Ahli,Active
+EMP0049,Kartika Zulkarnain,Production Planning,Supervisor,Supervisor,Active
+EMP0050,Nina Sari,Quality Assurance & R D,Manager IT,Supervisor,Active
+EMP0051,Rudi Kusuma,Plant A,Komandan Security,Staff Ahli,Active
+EMP0052,Lia Wati,Human Capital,Manager IT,Supervisor,Active
+EMP0053,Rina Nugroho,Sales Support,Operator Konstruksi,Supervisor,Active
+EMP0054,Indah Santoso,General Affair,Sopir Forklift,Director,Active
+EMP0055,Maman Wijaya,Plant C,Sopir Forklift,Supervisor,Active
+EMP0056,Samsul Hermawan,Sales Support,Manager IT,Supervisor,Active
+EMP0057,Dewi Lestari,Plant A,Teknisi Elektrik,Staff,Active
+EMP0058,Indah Hermawan,Sales 1,Komandan Security,Staff Ahli,Active
+EMP0059,Rina Zulkarnain,Facility,Account Receivable,Manager,Active
+EMP0060,Samsul Ramadhan,Internal Control,Manager Accounting,Staff Ahli,Active
+EMP0061,Maman Kusuma,Sales 2,Supervisor,Staff Ahli,Active
+EMP0062,Samsul Aminah,Marketing,Sopir Forklift,Staff Ahli,Active
+EMP0063,Rudi Lestari,Sales Support,Operator Mesin,Director,Active
+EMP0064,Lia Zulkarnain,Legal,Operator Mesin,Director,Active
+EMP0065,Lia Santoso,Plant C,Sopir Forklift,Director,Active
+EMP0066,Samsul Zulkarnain,Plant B,Operator Konstruksi,Foreman,Inactive
+EMP0067,Kartika Aminah,Plant D,Account Receivable,Manager,Active
+EMP0068,Nina Pratama,Sales Support,Operator Mesin,Manager,Active
+EMP0069,Eko Hidayat,Facility,Komandan Security,Jr. Staff,Active
+EMP0070,Oki Hermawan,Quality Assurance & R D,Electrical Engineer,Staff Ahli,Active
+EMP0071,Andi Saputra,Plant D,Teknisi Elektrik,Supervisor,Active
+EMP0072,Siti Pratama,Internal Control,Operator Mesin,Supervisor,Active
+EMP0073,Kartika Aminah,Procurement,Manager Accounting,Supervisor,Active
+EMP0074,Tanti Lestari,Plant E,Supervisor,Jr. Staff,Active
+EMP0075,Lia Wijaya,Sales 1,Operator Konstruksi,Staff,Active
+EMP0076,Rudi Wijaya,Plant A,Manager IT,Staff Ahli,Active
+EMP0077,Maman Hermawan,Quality Assurance & R D,Manager Accounting,Manager,Active
+EMP0078,Oki Lestari,Process Engineering,Sopir Forklift,Staff Ahli,Inactive
+EMP0079,Lia Wijaya,Human Capital,Supervisor,Director,Active
+EMP0080,Dewi Aminah,Plant C,Komandan Security,Staff Ahli,Inactive
+EMP0081,Nina Zulkarnain,Quality Assurance & R D,Operator Konstruksi,Staff,Active
+EMP0082,Maman Sari,Quality Assurance & R D,Operator Mesin,Manager,Active
+EMP0083,Putra Aminah,Quality Assurance & R D,Manager Accounting,Director,Active
+EMP0084,Dewi Saputra,Finance & Accounting,Operator Konstruksi,Staff,Active
+EMP0085,Fajar Ramadhan,Marketing,Teknisi Elektrik,Jr. Staff,Active
+EMP0086,Dewi Hermawan,Commercial & Supply Chain,Operator Mesin,Staff,Inactive
+EMP0087,Rudi Kusuma,Plant D,Sopir Forklift,Jr. Staff,Active
+EMP0088,Budi Hermawan,Marketing,Electrical Engineer,Supervisor,Active
+EMP0089,Lia Wati,Production Planning,Operator Konstruksi,Foreman,Active
+EMP0090,Samsul Lestari,Plant C,Account Receivable,Jr. Staff,Active
+EMP0091,Budi Wijaya,Process Engineering,Electrical Engineer,Manager,Active
+EMP0092,Fajar Nugroho,Sales 2,Operator Konstruksi,Staff,Active
+EMP0093,Putra Nugroho,Sales 1,Electrical Engineer,Director,Active
+EMP0094,Budi Hermawan,Sales 1,Komandan Security,Supervisor,Active
+EMP0095,Tanti Zulkarnain,Internal Control,Operator Konstruksi,Jr. Staff,Active
+EMP0096,Rudi Kusuma,Internal Control,Manager Accounting,Staff,Active
+EMP0097,Budi Nugroho,Legal,Operator Mesin,Staff Ahli,Active
+EMP0098,Oki Santoso,Information Technology,Supervisor,Supervisor,Active
+EMP0099,Nina Kusuma,Marketing,Operator Mesin,Director,Active
+EMP0100,Nina Nugroho,Human Capital,Manager Accounting,Foreman,Active
+EMP0101,Rina Hidayat,Sales Support,Supervisor,Jr. Staff,Active
+EMP0102,Gita Hidayat,Legal,Electrical Engineer,Foreman,Active
+EMP0103,Lia Sari,Plant E,Operator Konstruksi,Staff Ahli,Active
+EMP0104,Eko Saputra,Legal,Sopir Forklift,Foreman,Active
+EMP0105,Dewi Hidayat,Procurement,Supervisor,Jr. Staff,Active
+EMP0106,Gita Pratama,Commercial & Supply Chain,Sopir Forklift,Foreman,Active
+EMP0107,Rina Saputra,Sales 1,Manager IT,Staff Ahli,Inactive
+EMP0108,Andi Purnomo,Commercial & Supply Chain,Electrical Engineer,Staff,Active
+EMP0109,Fajar Santoso,Plant D,Sopir Forklift,Supervisor,Active
+EMP0110,Indah Kusuma,Plant B,Operator Konstruksi,Staff Ahli,Inactive
+EMP0111,Rina Pratama,Marketing,Operator Konstruksi,Foreman,Active
+EMP0112,Rina Hidayat,Commercial & Supply Chain,Electrical Engineer,Director,Active
+EMP0113,Gita Sari,Marketing,Sopir Forklift,Director,Inactive
+EMP0114,Lia Hidayat,Internal Control,Manager Accounting,Staff Ahli,Active
+EMP0115,Tanti Wati,Plant D,Account Receivable,Jr. Staff,Active
+EMP0116,Lia Nugroho,Information Technology,Supervisor,Staff,Active
+EMP0117,Joko Kusuma,Sales 2,Operator Mesin,Staff Ahli,Active
+EMP0118,Hendra Nugroho,Maintenance,Operator Mesin,Staff,Active
+EMP0119,Rudi Pratama,Sales 1,Account Receivable,Staff Ahli,Active
+EMP0120,Nina Aminah,Sales 1,Operator Mesin,Foreman,Active
+EMP0121,Samsul Nugroho,Procurement,Operator Konstruksi,Staff Ahli,Active
+EMP0122,Kartika Ramadhan,Procurement,Manager IT,Manager,Active
+EMP0123,Joko Ramadhan,Internal Control,Operator Mesin,Foreman,Active
+EMP0124,Lia Wijaya,Plant A,Manager IT,Staff Ahli,Active
+EMP0125,Andi Saputra,Sales 2,Operator Konstruksi,Staff Ahli,Active
+EMP0126,Kartika Pratama,Maintenance,Teknisi Elektrik,Supervisor,Inactive
+EMP0127,Gita Pratama,Quality Assurance & R D,Sopir Forklift,Manager,Active
+EMP0128,Maman Pratama,Commercial & Supply Chain,Electrical Engineer,Staff Ahli,Active
+EMP0129,Joko Santoso,Plant D,Teknisi Elektrik,Jr. Staff,Inactive
+EMP0130,Andi Sari,Procurement,Manager Accounting,Foreman,Inactive
+EMP0131,Tanti Nugroho,Quality Assurance & R D,Account Receivable,Director,Active
+EMP0132,Andi Aminah,Procurement,Teknisi Elektrik,Jr. Staff,Active
+EMP0133,Siti Saputra,Legal,Manager Accounting,Staff,Active
+EMP0134,Maman Wijaya,Plant C,Supervisor,Supervisor,Active
+EMP0135,Kartika Hidayat,Legal,Account Receivable,Jr. Staff,Active
+EMP0136,Rudi Nugroho,Plant C,Manager IT,Manager,Active
+EMP0137,Nina Aminah,Human Capital,Komandan Security,Staff,Active
+EMP0138,Budi Nugroho,Information Technology,Electrical Engineer,Staff,Active
+EMP0139,Putra Hidayat,Human Capital,Account Receivable,Manager,Active
+EMP0140,Fajar Lestari,Information Technology,Sopir Forklift,Staff Ahli,Active
+EMP0141,Fajar Zulkarnain,Procurement,Account Receivable,Foreman,Active
+EMP0142,Dewi Nugroho,Sales 2,Manager Accounting,Staff Ahli,Active
+EMP0143,Putra Aminah,Plant C,Operator Mesin,Staff,Active
+EMP0144,Dewi Ramadhan,Facility,Sopir Forklift,Manager,Inactive
+EMP0145,Siti Wati,Plant A,Sopir Forklift,Manager,Active
+EMP0146,Andi Saputra,Plant D,Supervisor,Manager,Active
+EMP0147,Hendra Sari,Legal,Manager IT,Director,Active
+EMP0148,Fajar Lestari,Sales 1,Operator Konstruksi,Supervisor,Active
+EMP0149,Rudi Hermawan,Marketing,Manager IT,Jr. Staff,Active
+EMP0150,Nina Purnomo,Facility,Teknisi Elektrik,Manager,Active
+EMP0151,Lia Wijaya,Quality Assurance & R D,Manager IT,Supervisor,Inactive
+EMP0152,Tanti Sari,Plant A,Account Receivable,Jr. Staff,Active
+EMP0153,Indah Wijaya,Facility,Teknisi Elektrik,Supervisor,Active
+EMP0154,Putra Ramadhan,Plant C,Electrical Engineer,Manager,Active
+EMP0155,Hendra Pratama,Sales Support,Manager Accounting,Manager,Active
+EMP0156,Maman Aminah,Plant A,Manager Accounting,Staff,Inactive
+EMP0157,Budi Hermawan,Human Capital,Operator Mesin,Jr. Staff,Active
+EMP0158,Gita Ramadhan,Quality Assurance & R D,Operator Konstruksi,Staff Ahli,Active
+EMP0159,Nina Wati,Marketing,Teknisi Elektrik,Manager,Active
+EMP0160,Fajar Aminah,Plant E,Manager IT,Foreman,Active
+EMP0161,Rudi Wati,Information Technology,Operator Konstruksi,Jr. Staff,Active
+EMP0162,Siti Ramadhan,Plant E,Operator Mesin,Foreman,Active
+EMP0163,Budi Wati,Plant E,Sopir Forklift,Foreman,Active
+EMP0164,Rudi Ramadhan,Marketing,Operator Mesin,Manager,Active
+EMP0165,Samsul Kusuma,Procurement,Sopir Forklift,Staff,Active
+EMP0166,Eko Saputra,Plant C,Manager IT,Jr. Staff,Active
+EMP0167,Putra Lestari,Sales Support,Electrical Engineer,Manager,Active
+EMP0168,Samsul Saputra,Facility,Account Receivable,Director,Active
+EMP0169,Joko Hidayat,Sales Support,Komandan Security,Director,Active
+EMP0170,Putra Sari,Human Capital,Electrical Engineer,Staff,Active
+EMP0171,Joko Santoso,Internal Control,Supervisor,Supervisor,Active
+EMP0172,Joko Ramadhan,Information Technology,Electrical Engineer,Staff,Active
+EMP0173,Kartika Lestari,Production Planning,Komandan Security,Foreman,Active
+EMP0174,Tanti Hermawan,Legal,Manager Accounting,Manager,Active
+EMP0175,Hendra Lestari,Plant D,Sopir Forklift,Foreman,Active
+EMP0176,Putra Purnomo,Commercial & Supply Chain,Manager Accounting,Staff Ahli,Active
+EMP0177,Joko Zulkarnain,Plant E,Sopir Forklift,Staff,Active
+EMP0178,Nina Purnomo,Plant C,Supervisor,Jr. Staff,Inactive
+EMP0179,Kartika Lestari,Plant D,Komandan Security,Jr. Staff,Active
+EMP0180,Fajar Pratama,Legal,Komandan Security,Staff Ahli,Inactive
+EMP0181,Tanti Wati,Human Capital,Manager Accounting,Manager,Active
+EMP0182,Putra Wijaya,Internal Control,Komandan Security,Manager,Active
+EMP0183,Hendra Hidayat,Commercial & Supply Chain,Supervisor,Foreman,Active
+EMP0184,Budi Hidayat,Production Planning,Operator Konstruksi,Jr. Staff,Active
+EMP0185,Joko Hermawan,Production Planning,Manager IT,Manager,Active
+EMP0186,Putra Wijaya,Maintenance,Komandan Security,Staff Ahli,Active
+EMP0187,Lia Santoso,Process Engineering,Teknisi Elektrik,Manager,Active
+EMP0188,Gita Pratama,Human Capital,Komandan Security,Supervisor,Active
+EMP0189,Andi Wati,Information Technology,Operator Mesin,Director,Active
+EMP0190,Indah Aminah,Sales 1,Sopir Forklift,Supervisor,Active
+EMP0191,Gita Wijaya,Process Engineering,Manager Accounting,Foreman,Active
+EMP0192,Rudi Nugroho,Marketing,Operator Mesin,Supervisor,Active
+EMP0193,Andi Hidayat,Maintenance,Sopir Forklift,Staff Ahli,Active
+EMP0194,Rina Lestari,Plant A,Sopir Forklift,Foreman,Inactive
+EMP0195,Rudi Zulkarnain,Internal Control,Account Receivable,Staff Ahli,Active
+EMP0196,Kartika Kusuma,Human Capital,Operator Mesin,Manager,Active
+EMP0197,Putra Wijaya,Quality Assurance & R D,Komandan Security,Director,Active
+EMP0198,Andi Pratama,Marketing,Manager IT,Jr. Staff,Active
+EMP0199,Joko Hidayat,Quality Assurance & R D,Manager Accounting,Director,Active
+EMP0200,Lia Lestari,Maintenance,Account Receivable,Supervisor,Active
+EMP0201,Hendra Santoso,Procurement,Electrical Engineer,Jr. Staff,Active
+EMP0202,Dewi Pratama,Sales 1,Sopir Forklift,Foreman,Active
+EMP0203,Samsul Aminah,General Affair,Operator Mesin,Supervisor,Active
+EMP0204,Dewi Saputra,Internal Control,Manager Accounting,Jr. Staff,Active
+EMP0205,Kartika Sari,Commercial & Supply Chain,Teknisi Elektrik,Staff,Active
+EMP0206,Nina Lestari,Plant A,Operator Konstruksi,Supervisor,Active
+EMP0207,Tanti Hermawan,Plant C,Account Receivable,Foreman,Active
+EMP0208,Siti Wijaya,Marketing,Supervisor,Jr. Staff,Active
+EMP0209,Maman Lestari,Process Engineering,Supervisor,Supervisor,Active
+EMP0210,Putra Sari,Quality Assurance & R D,Komandan Security,Foreman,Active
+EMP0211,Hendra Ramadhan,Sales Support,Sopir Forklift,Director,Active
+EMP0212,Siti Wijaya,Plant B,Electrical Engineer,Foreman,Active
+EMP0213,Fajar Wijaya,Plant A,Account Receivable,Staff,Active
+EMP0214,Lia Lestari,Plant A,Teknisi Elektrik,Supervisor,Active
+EMP0215,Indah Lestari,Plant B,Komandan Security,Staff Ahli,Active
+EMP0216,Dewi Aminah,Plant B,Manager Accounting,Supervisor,Active
+EMP0217,Oki Kusuma,Legal,Account Receivable,Staff,Active
+EMP0218,Siti Pratama,Sales Support,Manager IT,Manager,Active
+EMP0219,Siti Zulkarnain,General Affair,Operator Mesin,Manager,Active
+EMP0220,Putra Purnomo,Maintenance,Operator Konstruksi,Manager,Active
+EMP0221,Oki Kusuma,Process Engineering,Manager Accounting,Supervisor,Active
+EMP0222,Budi Zulkarnain,Commercial & Supply Chain,Teknisi Elektrik,Director,Active
+EMP0223,Siti Pratama,Commercial & Supply Chain,Account Receivable,Supervisor,Active
+EMP0224,Rina Kusuma,Legal,Operator Konstruksi,Foreman,Active
+EMP0225,Kartika Ramadhan,Maintenance,Sopir Forklift,Manager,Active
+EMP0226,Rina Hermawan,Sales Support,Komandan Security,Director,Active
+EMP0227,Dewi Sari,Plant E,Operator Mesin,Foreman,Active
+EMP0228,Putra Lestari,Plant E,Operator Konstruksi,Jr. Staff,Active
+EMP0229,Hendra Wijaya,Finance & Accounting,Teknisi Elektrik,Director,Active
+EMP0230,Nina Wati,Maintenance,Komandan Security,Staff,Active
+EMP0231,Siti Nugroho,Plant E,Operator Konstruksi,Manager,Active
+EMP0232,Dewi Kusuma,Sales 2,Komandan Security,Staff,Inactive
+EMP0233,Hendra Nugroho,Internal Control,Manager IT,Manager,Active
+EMP0234,Tanti Wijaya,Facility,Account Receivable,Supervisor,Active
+EMP0235,Samsul Purnomo,Human Capital,Teknisi Elektrik,Jr. Staff,Active
+EMP0236,Andi Purnomo,Marketing,Komandan Security,Staff,Active
+EMP0237,Siti Hidayat,Process Engineering,Sopir Forklift,Staff,Inactive
+EMP0238,Eko Lestari,Commercial & Supply Chain,Operator Konstruksi,Foreman,Active
+EMP0239,Lia Lestari,Sales 2,Operator Konstruksi,Director,Active
+EMP0240,Lia Hidayat,Plant D,Sopir Forklift,Director,Active
+EMP0241,Andi Sari,Maintenance,Teknisi Elektrik,Staff Ahli,Active
+EMP0242,Lia Nugroho,Plant E,Electrical Engineer,Staff Ahli,Active
+EMP0243,Maman Pratama,Quality Assurance & R D,Teknisi Elektrik,Staff Ahli,Active
+EMP0244,Tanti Kusuma,Sales 1,Account Receivable,Supervisor,Active
+EMP0245,Indah Ramadhan,Sales Support,Account Receivable,Director,Active
+EMP0246,Oki Aminah,Process Engineering,Manager Accounting,Manager,Active
+EMP0247,Indah Sari,Plant B,Account Receivable,Director,Inactive
+EMP0248,Maman Santoso,Plant C,Supervisor,Supervisor,Active
+EMP0249,Budi Aminah,Sales 2,Teknisi Elektrik,Foreman,Active
+EMP0250,Tanti Wati,Human Capital,Operator Konstruksi,Director,Active
+EMP0251,Budi Ramadhan,Production Planning,Sopir Forklift,Director,Active
+EMP0252,Nina Kusuma,Procurement,Manager Accounting,Supervisor,Active
+EMP0253,Oki Wijaya,Production Planning,Manager Accounting,Staff Ahli,Active
+EMP0254,Kartika Aminah,Human Capital,Sopir Forklift,Jr. Staff,Active
+EMP0255,Nina Wati,Plant A,Teknisi Elektrik,Staff Ahli,Active
+EMP0256,Kartika Santoso,Plant A,Komandan Security,Manager,Active
+EMP0257,Rina Zulkarnain,Plant E,Operator Mesin,Director,Active
+EMP0258,Rina Ramadhan,Finance & Accounting,Supervisor,Jr. Staff,Active
+EMP0259,Budi Zulkarnain,Process Engineering,Account Receivable,Jr. Staff,Active
+EMP0260,Oki Sari,Legal,Manager Accounting,Manager,Active
+EMP0261,Indah Pratama,Sales 2,Manager IT,Staff Ahli,Active
+EMP0262,Maman Saputra,Legal,Manager Accounting,Staff Ahli,Active
+EMP0263,Oki Wijaya,Finance & Accounting,Operator Konstruksi,Supervisor,Active
+EMP0264,Indah Sari,Sales 1,Manager Accounting,Staff Ahli,Active
+EMP0265,Andi Santoso,Plant D,Manager IT,Jr. Staff,Active
+EMP0266,Siti Purnomo,Marketing,Komandan Security,Staff Ahli,Active
+EMP0267,Lia Kusuma,Plant D,Operator Konstruksi,Foreman,Active
+EMP0268,Indah Aminah,Process Engineering,Operator Konstruksi,Staff Ahli,Inactive
+EMP0269,Joko Sari,Plant C,Operator Konstruksi,Foreman,Active
+EMP0270,Kartika Hermawan,Finance & Accounting,Komandan Security,Staff,Active
+EMP0271,Joko Lestari,Commercial & Supply Chain,Teknisi Elektrik,Director,Active
+EMP0272,Gita Purnomo,Human Capital,Supervisor,Staff Ahli,Inactive
+EMP0273,Putra Zulkarnain,Information Technology,Manager IT,Staff Ahli,Active
+EMP0274,Samsul Kusuma,Information Technology,Teknisi Elektrik,Staff,Active
+EMP0275,Joko Zulkarnain,Legal,Account Receivable,Supervisor,Active
+EMP0276,Samsul Zulkarnain,Plant B,Sopir Forklift,Manager,Active
+EMP0277,Siti Purnomo,Information Technology,Operator Mesin,Jr. Staff,Active
+EMP0278,Gita Nugroho,Marketing,Account Receivable,Staff,Active
+EMP0279,Joko Ramadhan,Production Planning,Sopir Forklift,Manager,Active
+EMP0280,Samsul Purnomo,Quality Assurance & R D,Operator Konstruksi,Supervisor,Active
+EMP0281,Indah Lestari,Production Planning,Operator Konstruksi,Jr. Staff,Active
+EMP0282,Putra Pratama,Plant D,Sopir Forklift,Staff,Active
+EMP0283,Rudi Purnomo,Legal,Komandan Security,Staff,Active
+EMP0284,Nina Zulkarnain,Internal Control,Sopir Forklift,Foreman,Active
+EMP0285,Andi Nugroho,Plant C,Operator Konstruksi,Supervisor,Active
+EMP0286,Joko Wijaya,Process Engineering,Sopir Forklift,Director,Inactive
+EMP0287,Putra Hermawan,Information Technology,Account Receivable,Supervisor,Active
+EMP0288,Budi Wijaya,Procurement,Manager Accounting,Director,Inactive
+EMP0289,Rudi Purnomo,Finance & Accounting,Electrical Engineer,Staff,Inactive
+EMP0290,Joko Nugroho,Sales 2,Sopir Forklift,Staff Ahli,Active
+EMP0291,Eko Ramadhan,Legal,Komandan Security,Staff,Active
+EMP0292,Nina Pratama,Sales 1,Sopir Forklift,Foreman,Active
+EMP0293,Joko Saputra,Marketing,Supervisor,Manager,Active
+EMP0294,Andi Purnomo,Plant C,Operator Konstruksi,Staff,Active
+EMP0295,Hendra Wijaya,Process Engineering,Sopir Forklift,Manager,Active
+EMP0296,Hendra Hidayat,Process Engineering,Account Receivable,Foreman,Active
+EMP0297,Hendra Lestari,Maintenance,Manager IT,Jr. Staff,Active
+EMP0298,Siti Kusuma,Plant C,Supervisor,Manager,Active
+EMP0299,Joko Purnomo,Legal,Komandan Security,Supervisor,Active
+EMP0300,Indah Hermawan,Plant A,Komandan Security,Staff Ahli,Active
+EMP0301,Nina Nugroho,Plant B,Teknisi Elektrik,Staff,Active
+EMP0302,Budi Zulkarnain,Finance & Accounting,Teknisi Elektrik,Manager,Active
+EMP0303,Oki Aminah,Legal,Sopir Forklift,Staff Ahli,Active
+EMP0304,Rudi Saputra,Facility,Operator Mesin,Manager,Active
+EMP0305,Rina Hidayat,Plant C,Operator Mesin,Staff,Active
+EMP0306,Kartika Santoso,Human Capital,Supervisor,Manager,Active
+EMP0307,Siti Wijaya,Plant A,Operator Mesin,Director,Active
+EMP0308,Putra Wijaya,Plant C,Operator Konstruksi,Director,Active
+EMP0309,Rudi Wijaya,Plant A,Operator Mesin,Jr. Staff,Inactive
+EMP0310,Dewi Zulkarnain,Procurement,Sopir Forklift,Jr. Staff,Active
+EMP0311,Rina Lestari,Legal,Teknisi Elektrik,Staff Ahli,Active
+EMP0312,Rina Purnomo,Plant B,Manager IT,Director,Active
+EMP0313,Rudi Nugroho,Sales 1,Sopir Forklift,Jr. Staff,Active
+EMP0314,Gita Wati,Commercial & Supply Chain,Manager Accounting,Staff,Active
+EMP0315,Fajar Kusuma,Plant A,Account Receivable,Staff Ahli,Active
+EMP0316,Fajar Hidayat,Plant C,Account Receivable,Supervisor,Active
+EMP0317,Gita Kusuma,Facility,Electrical Engineer,Jr. Staff,Active
+EMP0318,Kartika Santoso,Plant B,Electrical Engineer,Jr. Staff,Active
+EMP0319,Budi Saputra,Marketing,Komandan Security,Supervisor,Active
+EMP0320,Lia Aminah,Legal,Manager IT,Staff Ahli,Active
+EMP0321,Budi Kusuma,Plant E,Teknisi Elektrik,Foreman,Active
+EMP0322,Samsul Wati,Finance & Accounting,Manager Accounting,Supervisor,Inactive
+EMP0323,Indah Sari,Facility,Operator Mesin,Jr. Staff,Active
+EMP0324,Tanti Santoso,Production Planning,Komandan Security,Foreman,Active
+EMP0325,Kartika Purnomo,Internal Control,Manager IT,Jr. Staff,Active
+EMP0326,Rudi Wijaya,Sales 1,Account Receivable,Supervisor,Active
+EMP0327,Rina Wijaya,Production Planning,Sopir Forklift,Director,Active
+EMP0328,Kartika Hermawan,Plant B,Operator Mesin,Staff Ahli,Active
+EMP0329,Nina Pratama,Maintenance,Teknisi Elektrik,Foreman,Inactive
+EMP0330,Hendra Purnomo,Maintenance,Teknisi Elektrik,Supervisor,Inactive
+EMP0331,Nina Hermawan,Plant B,Manager Accounting,Jr. Staff,Active
+EMP0332,Rina Kusuma,Commercial & Supply Chain,Komandan Security,Supervisor,Active
+EMP0333,Samsul Nugroho,Procurement,Teknisi Elektrik,Staff,Active
+EMP0334,Eko Purnomo,Marketing,Komandan Security,Foreman,Active
+EMP0335,Indah Wijaya,Maintenance,Supervisor,Staff Ahli,Active
+EMP0336,Rina Kusuma,Plant A,Account Receivable,Director,Active
+EMP0337,Budi Lestari,Finance & Accounting,Manager Accounting,Director,Active
+EMP0338,Dewi Purnomo,Procurement,Komandan Security,Manager,Active
+EMP0339,Nina Nugroho,Procurement,Electrical Engineer,Manager,Active
+EMP0340,Indah Purnomo,General Affair,Sopir Forklift,Director,Active
+EMP0341,Rina Zulkarnain,Sales Support,Electrical Engineer,Supervisor,Active
+EMP0342,Rina Hidayat,Sales Support,Supervisor,Manager,Active
+EMP0343,Maman Sari,Process Engineering,Komandan Security,Staff Ahli,Active
+EMP0344,Joko Kusuma,General Affair,Electrical Engineer,Manager,Active
+EMP0345,Budi Wijaya,Plant A,Manager Accounting,Supervisor,Inactive
+EMP0346,Indah Hermawan,Marketing,Electrical Engineer,Staff Ahli,Active
+EMP0347,Andi Kusuma,Internal Control,Manager Accounting,Staff Ahli,Active
+EMP0348,Nina Purnomo,Facility,Operator Mesin,Jr. Staff,Active
+EMP0349,Eko Lestari,Commercial & Supply Chain,Teknisi Elektrik,Staff,Active
+EMP0350,Lia Pratama,Information Technology,Electrical Engineer,Staff,Active
+EMP0351,Hendra Wijaya,Plant A,Account Receivable,Manager,Active
+EMP0352,Indah Saputra,Plant D,Operator Konstruksi,Jr. Staff,Active
+EMP0353,Kartika Kusuma,Plant E,Supervisor,Foreman,Active
+EMP0354,Lia Santoso,Finance & Accounting,Manager IT,Director,Active
+EMP0355,Lia Zulkarnain,Plant D,Electrical Engineer,Director,Active
+EMP0356,Kartika Purnomo,Procurement,Supervisor,Staff,Active
+EMP0357,Budi Kusuma,Plant B,Operator Mesin,Staff Ahli,Inactive
+EMP0358,Nina Wati,Plant E,Electrical Engineer,Jr. Staff,Inactive
+EMP0359,Rudi Purnomo,Information Technology,Account Receivable,Manager,Active
+EMP0360,Rudi Nugroho,Commercial & Supply Chain,Manager IT,Staff,Active
+EMP0361,Rudi Wijaya,Plant A,Sopir Forklift,Jr. Staff,Active
+EMP0362,Kartika Zulkarnain,Plant B,Manager Accounting,Staff,Active
+EMP0363,Gita Lestari,Sales 2,Teknisi Elektrik,Staff Ahli,Active
+EMP0364,Nina Zulkarnain,Legal,Manager Accounting,Staff Ahli,Active
+EMP0365,Putra Wijaya,Plant A,Electrical Engineer,Manager,Active
+EMP0366,Nina Purnomo,Facility,Electrical Engineer,Staff Ahli,Active
+EMP0367,Andi Santoso,Sales 2,Electrical Engineer,Staff Ahli,Active
+EMP0368,Kartika Hermawan,Maintenance,Account Receivable,Jr. Staff,Active
+EMP0369,Tanti Sari,Maintenance,Supervisor,Staff,Active
+EMP0370,Rina Hidayat,Maintenance,Electrical Engineer,Supervisor,Active
+EMP0371,Oki Santoso,Production Planning,Operator Mesin,Staff,Active
+EMP0372,Putra Sari,Process Engineering,Komandan Security,Manager,Active
+EMP0373,Dewi Santoso,General Affair,Manager Accounting,Manager,Active
+EMP0374,Oki Kusuma,Procurement,Teknisi Elektrik,Foreman,Active
+EMP0375,Joko Pratama,Facility,Teknisi Elektrik,Staff,Inactive
+EMP0376,Siti Aminah,Procurement,Teknisi Elektrik,Jr. Staff,Active
+EMP0377,Eko Santoso,Marketing,Operator Mesin,Manager,Active
+EMP0378,Maman Hermawan,Legal,Supervisor,Director,Active
+EMP0379,Eko Sari,Legal,Electrical Engineer,Staff,Inactive
+EMP0380,Siti Hidayat,Commercial & Supply Chain,Operator Konstruksi,Supervisor,Active
+EMP0381,Eko Wijaya,Sales 1,Supervisor,Foreman,Active
+EMP0382,Eko Zulkarnain,Process Engineering,Operator Konstruksi,Jr. Staff,Active
+EMP0383,Nina Aminah,Information Technology,Manager IT,Director,Active
+EMP0384,Budi Wati,Human Capital,Operator Mesin,Director,Active
+EMP0385,Kartika Pratama,Quality Assurance & R D,Manager IT,Staff,Active
+EMP0386,Fajar Pratama,Sales 2,Teknisi Elektrik,Foreman,Active
+EMP0387,Joko Aminah,Human Capital,Manager Accounting,Supervisor,Active
+EMP0388,Maman Zulkarnain,Sales Support,Account Receivable,Staff Ahli,Active
+EMP0389,Joko Saputra,Internal Control,Operator Konstruksi,Supervisor,Active
+EMP0390,Rina Ramadhan,Human Capital,Electrical Engineer,Staff,Active
+EMP0391,Indah Saputra,Plant D,Sopir Forklift,Jr. Staff,Active
+EMP0392,Kartika Hidayat,Process Engineering,Manager IT,Staff,Active
+EMP0393,Kartika Wati,Plant A,Komandan Security,Staff Ahli,Active
+EMP0394,Rina Hermawan,Plant B,Operator Konstruksi,Manager,Inactive
+EMP0395,Tanti Nugroho,Quality Assurance & R D,Supervisor,Jr. Staff,Active
+EMP0396,Eko Pratama,Maintenance,Operator Mesin,Foreman,Active
+EMP0397,Tanti Sari,Commercial & Supply Chain,Account Receivable,Staff Ahli,Active
+EMP0398,Kartika Wijaya,Plant B,Account Receivable,Staff,Active
+EMP0399,Oki Pratama,Sales 2,Manager Accounting,Manager,Inactive
+EMP0400,Tanti Nugroho,Production Planning,Manager Accounting,Supervisor,Active
+EMP0401,Indah Ramadhan,Plant E,Operator Konstruksi,Foreman,Active
+EMP0402,Indah Lestari,Sales 2,Supervisor,Director,Active
+EMP0403,Gita Nugroho,Process Engineering,Electrical Engineer,Foreman,Active
+EMP0404,Maman Hermawan,Plant C,Account Receivable,Staff Ahli,Active
+EMP0405,Tanti Zulkarnain,Legal,Electrical Engineer,Manager,Active
+EMP0406,Rina Lestari,Process Engineering,Sopir Forklift,Supervisor,Active
+EMP0407,Andi Kusuma,Procurement,Teknisi Elektrik,Staff Ahli,Inactive
+EMP0408,Dewi Sari,Plant E,Teknisi Elektrik,Supervisor,Active
+EMP0409,Budi Zulkarnain,Information Technology,Account Receivable,Supervisor,Active
+EMP0410,Andi Lestari,Procurement,Komandan Security,Supervisor,Active
+EMP0411,Eko Nugroho,Plant D,Manager Accounting,Manager,Active
+EMP0412,Siti Aminah,Production Planning,Account Receivable,Supervisor,Active
+EMP0413,Andi Kusuma,Quality Assurance & R D,Electrical Engineer,Foreman,Active
+EMP0414,Tanti Hermawan,Commercial & Supply Chain,Sopir Forklift,Staff,Active
+EMP0415,Andi Pratama,Process Engineering,Supervisor,Director,Active
+EMP0416,Oki Wijaya,Maintenance,Teknisi Elektrik,Foreman,Active
+EMP0417,Nina Nugroho,Facility,Manager Accounting,Supervisor,Inactive
+EMP0418,Indah Ramadhan,Internal Control,Operator Mesin,Staff Ahli,Active
+EMP0419,Fajar Hidayat,Marketing,Electrical Engineer,Staff,Active
+EMP0420,Andi Zulkarnain,Plant D,Komandan Security,Staff Ahli,Active
+EMP0421,Joko Santoso,Plant E,Operator Konstruksi,Foreman,Inactive
+EMP0422,Lia Ramadhan,Sales 2,Account Receivable,Manager,Active
+EMP0423,Lia Hidayat,Sales 2,Operator Konstruksi,Supervisor,Active
+EMP0424,Andi Hermawan,Maintenance,Komandan Security,Foreman,Active
+EMP0425,Samsul Ramadhan,Information Technology,Manager Accounting,Foreman,Active
+EMP0426,Kartika Kusuma,Sales Support,Account Receivable,Staff,Active
+EMP0427,Oki Hidayat,Plant C,Komandan Security,Staff,Active
+EMP0428,Putra Kusuma,Facility,Komandan Security,Manager,Active
+EMP0429,Indah Wati,Procurement,Manager IT,Foreman,Active
+EMP0430,Oki Pratama,Plant E,Operator Mesin,Staff Ahli,Active
+EMP0431,Siti Wati,Internal Control,Manager IT,Director,Active
+EMP0432,Budi Wijaya,Finance & Accounting,Account Receivable,Director,Active
+EMP0433,Putra Zulkarnain,General Affair,Teknisi Elektrik,Supervisor,Active
+EMP0434,Gita Hidayat,Sales 2,Supervisor,Staff,Active
+EMP0435,Gita Wijaya,Sales 1,Manager IT,Supervisor,Active
+EMP0436,Eko Hidayat,Quality Assurance & R D,Manager IT,Director,Active
+EMP0437,Putra Zulkarnain,Quality Assurance & R D,Electrical Engineer,Staff,Active
+EMP0438,Siti Saputra,Sales 1,Manager IT,Foreman,Active
+EMP0439,Andi Lestari,Finance & Accounting,Supervisor,Jr. Staff,Active
+EMP0440,Gita Aminah,Finance & Accounting,Operator Konstruksi,Foreman,Active
+EMP0441,Gita Nugroho,Plant C,Operator Konstruksi,Staff Ahli,Active
+EMP0442,Oki Hermawan,Marketing,Manager IT,Director,Active
+EMP0443,Hendra Ramadhan,Plant D,Operator Konstruksi,Supervisor,Active
+EMP0444,Joko Purnomo,Sales Support,Supervisor,Manager,Active
+EMP0445,Oki Ramadhan,Information Technology,Account Receivable,Director,Active
+EMP0446,Samsul Wati,Plant E,Komandan Security,Supervisor,Inactive
+EMP0447,Indah Nugroho,Legal,Sopir Forklift,Director,Active
+EMP0448,Lia Wati,Plant C,Operator Konstruksi,Manager,Active
+EMP0449,Indah Lestari,Human Capital,Operator Mesin,Supervisor,Active
+EMP0450,Nina Aminah,Internal Control,Manager Accounting,Foreman,Active
+EMP0451,Indah Wati,Marketing,Operator Mesin,Foreman,Active
+EMP0452,Lia Wijaya,Internal Control,Supervisor,Supervisor,Active
+EMP0453,Oki Saputra,Plant C,Electrical Engineer,Staff,Active
+EMP0454,Rina Nugroho,Process Engineering,Manager IT,Supervisor,Active
+EMP0455,Gita Purnomo,Commercial & Supply Chain,Teknisi Elektrik,Supervisor,Active
+EMP0456,Hendra Pratama,Plant D,Electrical Engineer,Jr. Staff,Active
+EMP0457,Eko Saputra,Sales Support,Manager IT,Supervisor,Active
+EMP0458,Joko Aminah,Human Capital,Sopir Forklift,Foreman,Active
+EMP0459,Andi Pratama,Plant D,Sopir Forklift,Staff Ahli,Active
+EMP0460,Samsul Aminah,Plant C,Supervisor,Supervisor,Active
+EMP0461,Dewi Saputra,Maintenance,Operator Konstruksi,Supervisor,Active
+EMP0462,Nina Sari,Plant B,Teknisi Elektrik,Staff Ahli,Active
+EMP0463,Maman Hidayat,Plant A,Supervisor,Supervisor,Active
+EMP0464,Hendra Pratama,Maintenance,Operator Konstruksi,Staff Ahli,Inactive
+EMP0465,Putra Santoso,Quality Assurance & R D,Manager Accounting,Supervisor,Active
+EMP0466,Joko Saputra,Legal,Komandan Security,Supervisor,Active
+EMP0467,Tanti Aminah,Sales 1,Supervisor,Jr. Staff,Inactive
+EMP0468,Joko Pratama,Plant A,Sopir Forklift,Staff Ahli,Active
+EMP0469,Fajar Wijaya,Information Technology,Komandan Security,Staff,Active
+EMP0470,Joko Hidayat,Production Planning,Sopir Forklift,Jr. Staff,Active
+EMP0471,Putra Ramadhan,Plant C,Manager Accounting,Manager,Active
+EMP0472,Oki Hidayat,Procurement,Manager IT,Staff,Inactive
+EMP0473,Putra Sari,Quality Assurance & R D,Komandan Security,Director,Active
+EMP0474,Kartika Aminah,Legal,Electrical Engineer,Jr. Staff,Inactive
+EMP0475,Kartika Hidayat,Internal Control,Teknisi Elektrik,Foreman,Active
+EMP0476,Samsul Aminah,Plant C,Manager Accounting,Supervisor,Active
+EMP0477,Lia Saputra,Quality Assurance & R D,Teknisi Elektrik,Manager,Active
+EMP0478,Nina Hidayat,Plant C,Teknisi Elektrik,Staff Ahli,Active
+EMP0479,Siti Sari,Sales Support,Operator Mesin,Supervisor,Active
+EMP0480,Oki Sari,Finance & Accounting,Operator Mesin,Staff,Active
+EMP0481,Lia Nugroho,Sales 2,Manager Accounting,Jr. Staff,Active
+EMP0482,Gita Kusuma,Procurement,Operator Konstruksi,Manager,Active
+EMP0483,Fajar Santoso,Finance & Accounting,Manager Accounting,Staff Ahli,Active
+EMP0484,Indah Hermawan,Marketing,Supervisor,Manager,Active
+EMP0485,Kartika Wijaya,Sales 1,Operator Mesin,Staff,Active
+EMP0486,Nina Pratama,Marketing,Supervisor,Jr. Staff,Active
+EMP0487,Joko Sari,Marketing,Operator Konstruksi,Manager,Active
+EMP0488,Indah Ramadhan,Information Technology,Account Receivable,Staff,Active
+EMP0489,Samsul Hidayat,Information Technology,Operator Konstruksi,Staff,Active
+EMP0490,Maman Aminah,Human Capital,Manager Accounting,Director,Active
+EMP0491,Siti Sari,General Affair,Supervisor,Manager,Inactive
+EMP0492,Eko Santoso,Internal Control,Manager Accounting,Director,Active
+EMP0493,Gita Kusuma,Marketing,Operator Konstruksi,Supervisor,Active
+EMP0494,Gita Purnomo,Marketing,Operator Mesin,Staff Ahli,Active
+EMP0495,Putra Hermawan,Information Technology,Operator Konstruksi,Manager,Active
+EMP0496,Putra Nugroho,Procurement,Teknisi Elektrik,Manager,Active
+EMP0497,Siti Pratama,Sales 1,Manager IT,Foreman,Active
+EMP0498,Eko Kusuma,Sales 1,Manager Accounting,Jr. Staff,Active
+EMP0499,Samsul Santoso,Procurement,Account Receivable,Supervisor,Active
+EMP0500,Dewi Santoso,Quality Assurance & R D,Teknisi Elektrik,Director,Inactive

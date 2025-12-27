@@ -42,7 +42,6 @@ if (isset($_GET['export']) && $_GET['export'] == 'excel') {
 // 2. LOGIKA AKSI (POST) - SIMPAN, UPDATE, IMPORT
 // =========================================
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // A. Simpan/Update Manual
     if (isset($_POST['save_employee'])) {
         $id = $_POST['id'] ?? null;
         $emp_id = $_POST['employee_id'];
@@ -67,14 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } catch (PDOException $e) { $msg = $e->getMessage(); }
     }
 
-    // B. Import CSV
     if (isset($_POST['import_csv'])) {
         $file = $_FILES['csv_file']['tmp_name'];
         if ($file) {
             $handle = fopen($file, "r");
-            $header = fgetcsv($handle, 1000, ","); // Lewati baris judul
+            // Menambahkan parameter enclosure dan escape secara eksplisit untuk PHP 8.4+
+            $header = fgetcsv($handle, 1000, ",", "\"", "\\"); 
             
-            // Ambil mapping master data untuk efisiensi
             $org_map = $pdo->query("SELECT id, org_name FROM master_organizations")->fetchAll(PDO::FETCH_KEY_PAIR);
             $pos_map = $pdo->query("SELECT id, position_name FROM master_job_positions")->fetchAll(PDO::FETCH_KEY_PAIR);
             $lvl_map = $pdo->query("SELECT id, level_name FROM master_job_levels")->fetchAll(PDO::FETCH_KEY_PAIR);
@@ -84,7 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                    full_name=VALUES(full_name), org_id=VALUES(org_id), 
                                    position_id=VALUES(position_id), level_id=VALUES(level_id), status=VALUES(status)");
             
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            // Menambahkan parameter enclosure dan escape secara eksplisit untuk PHP 8.4+
+            while (($data = fgetcsv($handle, 1000, ",", "\"", "\\")) !== FALSE) {
                 if (count($data) < 6) continue;
                 
                 $emp_id = $data[0];
@@ -172,6 +171,12 @@ if (isset($_GET['edit'])) {
                     </a>
                 </div>
             </div>
+
+            <?php if (isset($_GET['msg']) && $_GET['msg'] == 'imported'): ?>
+                <div style="background: #d1fae5; color: #065f46; padding: 15px; border-radius: 12px; margin-bottom: 25px; font-size: 14px; border: 1px solid #a7f3d0;">
+                    <i class="material-symbols-rounded" style="vertical-align: middle; font-size: 18px;">check_circle</i> Data berhasil diimport!
+                </div>
+            <?php endif; ?>
 
             <div id="importBox" class="form-card" style="display: none; border: 2px dashed #6366f1; background: #f5f3ff;">
                 <h4 style="margin-top: 0; color: #4338ca;">Import Data via CSV</h4>
