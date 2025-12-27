@@ -10,29 +10,32 @@ if (!isset($_SESSION['user_id'])) {
 
 $layout_dir = __DIR__ . '/../layout/';
 
-// --- 1. DEFINISI VARIABEL BULAN (Diletakkan di atas agar tidak Undefined) ---
 $months = [
     1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April', 
     5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus', 
     9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
 ];
 
-// --- 2. LOGIKA FILTER ---
-$filter_month = $_GET['month'] ?? date('m'); // Bisa 'all' atau '01'-'12'
+$filter_month = $_GET['month'] ?? date('m');
 $filter_year  = $_GET['year'] ?? date('Y');
+$filter_org   = $_GET['org'] ?? 'all';
+
+$orgs_master = $pdo->query("SELECT id, org_name FROM master_organizations ORDER BY org_name ASC")->fetchAll();
 
 try {
-    // --- 3. QUERY KPI CARDS ---
-    // Cek apakah filter 'Semua Bulan' atau bulan spesifik
-    $month_condition = ($filter_month === 'all') ? "" : "AND MONTH(training_date) = ?";
-    $params_kpi = ($filter_month === 'all') ? [$filter_year] : [(int)$filter_month, $filter_year];
+    // 1. QUERY KPI CARDS
+    $month_condition = ($filter_month === 'all') ? "" : "AND MONTH(t.training_date) = ?";
+    $org_condition = ($filter_org === 'all') ? "" : "AND EXISTS (SELECT 1 FROM training_participants tp JOIN employees e ON tp.employee_id = e.id WHERE tp.training_id = t.id AND e.org_id = ?)";
+    
+    $params_kpi = [$filter_year];
+    if ($filter_month !== 'all') $params_kpi[] = (int)$filter_month;
+    if ($filter_org !== 'all') $params_kpi[] = (int)$filter_org;
 
-    // A. Total Jam & Realisasi Training
     $sql_kpi = "SELECT 
-                    COUNT(id) as total_realized,
-                    SUM(TIMESTAMPDIFF(MINUTE, start_time, finish_time)) as total_mins
-                FROM trainings 
-                WHERE YEAR(training_date) = ? $month_condition";
+                    COUNT(t.id) as total_realized,
+                    SUM(TIMESTAMPDIFF(MINUTE, t.start_time, t.finish_time)) as total_mins
+                FROM trainings t
+                WHERE YEAR(t.training_date) = ? $month_condition $org_condition";
     
     $stmt_kpi = $pdo->prepare($sql_kpi);
     $stmt_kpi->execute($params_kpi);
@@ -41,14 +44,26 @@ try {
     $total_hours = round(($kpi['total_mins'] ?? 0) / 60, 1);
     $realized_count = $kpi['total_realized'] ?? 0;
 
-    // B. Total Karyawan & Average
-    $total_employees = $pdo->query("SELECT COUNT(*) FROM employees WHERE status = 'Active'")->fetchColumn() ?: 1;
+    // Hitung Total Karyawan (Denominator Average)
+    if ($filter_org !== 'all') {
+        $stmt_emp = $pdo->prepare("SELECT COUNT(*) FROM employees WHERE status = 'Active' AND org_id = ?");
+        $stmt_emp->execute([(int)$filter_org]);
+        $total_employees = $stmt_emp->fetchColumn() ?: 1;
+    } else {
+        $total_employees = $pdo->query("SELECT COUNT(*) FROM employees WHERE status = 'Active'")->fetchColumn() ?: 1;
+    }
     $avg_training_hours = round($total_hours / $total_employees, 2);
 
-    // --- 4. DATA TRAINING PENETRATION ---
-    $month_pen_condition = ($filter_month === 'all') ? "" : "AND MONTH(t.training_date) = ?";
-    $params_pen = ($filter_month === 'all') ? [$filter_year] : [(int)$filter_month, $filter_year];
+    // 2. DATA TRAINING PENETRATION
+    $params_pen = [$filter_year];
+    $month_pen_condition = "";
+    if ($filter_month !== 'all') {
+        $month_pen_condition = "AND MONTH(t.training_date) = ?";
+        $params_pen[] = (int)$filter_month;
+    }
 
+    $org_list_condition = ($filter_org === 'all') ? "" : "WHERE o.id = " . (int)$filter_org;
+    
     $sql_pen = "SELECT 
                     o.id, o.org_name,
                     (SELECT COUNT(*) FROM employees WHERE org_id = o.id AND status = 'Active') as total_emp,
@@ -58,18 +73,27 @@ try {
                      JOIN employees e ON tp.employee_id = e.id
                      WHERE e.org_id = o.id AND YEAR(t.training_date) = ? $month_pen_condition) as trained_emp
                 FROM master_organizations o 
+                $org_list_condition
                 ORDER BY o.org_name ASC";
     
     $stmt_pen = $pdo->prepare($sql_pen);
     $stmt_pen->execute($params_pen);
     $penetration_list = $stmt_pen->fetchAll(PDO::FETCH_ASSOC);
 
-    // --- 5. DATA GRAFIK (TREN BULANAN) ---
-    $chart_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    $sql_chart = "SELECT MONTH(training_date) as bln, SUM(TIMESTAMPDIFF(MINUTE, start_time, finish_time)) as mins 
-                  FROM trainings WHERE YEAR(training_date) = ? GROUP BY bln";
+    // 3. DATA GRAFIK (TREN BULANAN)
+    $chart_data = array_fill(0, 12, 0);
+    $chart_params = [$filter_year];
+    $chart_org_filter = "";
+    if ($filter_org !== 'all') {
+        $chart_org_filter = "AND EXISTS (SELECT 1 FROM training_participants tp JOIN employees e ON tp.employee_id = e.id WHERE tp.training_id = t.id AND e.org_id = ?)";
+        $chart_params[] = (int)$filter_org;
+    }
+
+    $sql_chart = "SELECT MONTH(t.training_date) as bln, SUM(TIMESTAMPDIFF(MINUTE, t.start_time, t.finish_time)) as mins 
+                  FROM trainings t WHERE YEAR(t.training_date) = ? $chart_org_filter GROUP BY bln";
+    
     $stmt_chart = $pdo->prepare($sql_chart);
-    $stmt_chart->execute([$filter_year]);
+    $stmt_chart->execute($chart_params);
     while($row = $stmt_chart->fetch(PDO::FETCH_ASSOC)) {
         $idx = (int)$row['bln'] - 1;
         if ($idx >= 0 && $idx <= 11) $chart_data[$idx] = round($row['mins'] / 60, 1);
@@ -102,6 +126,7 @@ try {
         .quick-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
         .link-item { background: #f8fafc; padding: 12px; border-radius: 10px; text-decoration: none; color: #1e293b; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 8px; border: 1px solid #e2e8f0; }
         .link-item:hover { background: var(--primary-blue); color: white; }
+        @media (max-width: 991px) { .main-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -112,18 +137,25 @@ try {
             <div>
                 <h2 style="margin: 0; color: var(--primary-blue);">Executive Summary</h2>
                 <p style="font-size: 13px; color: #64748b; margin: 0;">
-                    Periode: <?= ($filter_month === 'all') ? "Tahun Full $filter_year" : ($months[(int)$filter_month] ?? '') . " $filter_year" ?>
+                    Periode: <?= ($filter_month === 'all') ? "Tahun Full $filter_year" : ($months[(int)$filter_month] ?? '') . " $filter_year" ?> 
+                    <?= ($filter_org !== 'all') ? " | Dept: " . htmlspecialchars($penetration_list[0]['org_name'] ?? '') : "" ?>
                 </p>
             </div>
             
-            <form method="GET" style="display: flex; gap: 10px; background: white; padding: 8px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                <select name="month" class="form-control" style="width: 150px;">
+            <form method="GET" style="display: flex; gap: 8px; background: white; padding: 8px; border-radius: 12px; border: 1px solid #e2e8f0; flex-wrap: wrap;">
+                <select name="org" class="form-control" style="width: 160px;">
+                    <option value="all" <?= ($filter_org === 'all') ? 'selected' : '' ?>>-- Semua Dept --</option>
+                    <?php foreach($orgs_master as $o): ?>
+                        <option value="<?= $o['id'] ?>" <?= ($filter_org == $o['id']) ? 'selected' : '' ?>><?= htmlspecialchars($o['org_name']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="month" class="form-control" style="width: 140px;">
                     <option value="all" <?= ($filter_month === 'all') ? 'selected' : '' ?>>-- Semua Bulan --</option>
                     <?php foreach($months as $num => $name): ?>
                         <option value="<?= str_pad($num, 2, '0', STR_PAD_LEFT) ?>" <?= ((int)$filter_month == $num && $filter_month !== 'all') ? 'selected' : '' ?>><?= $name ?></option>
                     <?php endforeach; ?>
                 </select>
-                <select name="year" class="form-control" style="width: 100px;">
+                <select name="year" class="form-control" style="width: 90px;">
                     <?php for($y=date('Y'); $y>=2024; $y--): ?>
                         <option value="<?= $y ?>" <?= ($filter_year == $y) ? 'selected' : '' ?>><?= $y ?></option>
                     <?php endfor; ?>
@@ -140,13 +172,9 @@ try {
             <div class="kpi-card">
                 <span class="kpi-title">Avg. Hours / Karyawan</span>
                 <span class="kpi-value"><?= number_format($avg_training_hours, 2) ?> <small style="font-size: 14px;">Hrs</small></span>
-            </div>
-            <div class="kpi-card">
-                <span class="kpi-title">Sesi Terealisasi</span>
-                <span class="kpi-value"><?= $realized_count ?> <small style="font-size: 14px;">Sesi</small></span>
-            </div>
+                    </div>
             <div class="kpi-card" style="background: var(--primary-blue); color: white;">
-                <span class="kpi-title" style="color: rgba(255,255,255,0.7);">Total Karyawan Aktif</span>
+                <span class="kpi-title" style="color: rgba(255,255,255,0.7);">Karyawan Aktif (Filter)</span>
                 <span class="kpi-value" style="color: white;"><?= $total_employees ?></span>
             </div>
         </div>
@@ -154,27 +182,20 @@ try {
         <div class="main-grid">
             <div class="chart-box">
                 <h4 style="margin: 0 0 20px 0;">Trend Bulanan Jam Pelatihan (<?= $filter_year ?>)</h4>
-                <div style="height: 350px;">
-                    <canvas id="hoursChart"></canvas>
-                </div>
+                <div style="height: 350px;"><canvas id="hoursChart"></canvas></div>
             </div>
-
             <div class="side-box">
                 <h4 style="margin: 0 0 20px 0;">Penetrasi Training</h4>
-                <div style="max-height: 400px; overflow-y: auto; padding-right: 5px;">
+                <div style="max-height: 400px; overflow-y: auto;">
                     <?php foreach($penetration_list as $pen): 
                         $pct = ($pen['total_emp'] > 0) ? round(($pen['trained_emp'] / $pen['total_emp']) * 100) : 0;
                     ?>
                     <div class="pen-item">
-                        <div class="pen-info">
-                            <span><?= htmlspecialchars($pen['org_name']) ?></span>
-                            <span style="font-weight: 700;"><?= $pct ?>%</span>
-                        </div>
+                        <div class="pen-info"><span><?= htmlspecialchars($pen['org_name']) ?></span><span style="font-weight: 700;"><?= $pct ?>%</span></div>
                         <div class="pen-bar"><div class="pen-fill" style="width: <?= $pct ?>%;"></div></div>
                     </div>
                     <?php endforeach; ?>
                 </div>
-
                 <h4 style="margin: 30px 0 15px 0;">Menu Akses Cepat</h4>
                 <div class="quick-links">
                     <a href="../training-data/index.php" class="link-item"><i class="material-symbols-rounded">add_box</i> Input Training</a>

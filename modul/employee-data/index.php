@@ -3,7 +3,6 @@ session_start();
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../config/helper.php';
 
-// Proteksi Sesi
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
     exit();
@@ -13,9 +12,37 @@ $layout_dir = __DIR__ . '/../layout/';
 $msg = "";
 
 // =========================================
-// 1. LOGIKA AKSI (POST) - SIMPAN & UPDATE
+// 1. LOGIKA EXPORT EXCEL (GET)
+// =========================================
+if (isset($_GET['export']) && $_GET['export'] == 'excel') {
+    header("Content-Type: application/vnd.ms-excel");
+    header("Content-Disposition: attachment; filename=Employee_Data_" . date('Ymd') . ".xls");
+    
+    echo "NIK\tNama Lengkap\tOrganization\tPosition\tLevel\tStatus\n";
+    
+    $sql_export = "SELECT e.*, o.org_name, p.position_name, l.level_name 
+                   FROM employees e 
+                   LEFT JOIN master_organizations o ON e.org_id = o.id 
+                   LEFT JOIN master_job_positions p ON e.position_id = p.id 
+                   LEFT JOIN master_job_levels l ON e.level_id = l.id 
+                   ORDER BY e.full_name ASC";
+    $stmt_export = $pdo->query($sql_export);
+    while ($row = $stmt_export->fetch()) {
+        echo $row['employee_id'] . "\t" . 
+             $row['full_name'] . "\t" . 
+             $row['org_name'] . "\t" . 
+             $row['position_name'] . "\t" . 
+             $row['level_name'] . "\t" . 
+             $row['status'] . "\n";
+    }
+    exit();
+}
+
+// =========================================
+// 2. LOGIKA AKSI (POST) - SIMPAN, UPDATE, IMPORT
 // =========================================
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // A. Simpan/Update Manual
     if (isset($_POST['save_employee'])) {
         $id = $_POST['id'] ?? null;
         $emp_id = $_POST['employee_id'];
@@ -27,57 +54,81 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         try {
             if ($id) {
-                // Update Data Karyawan
                 $sql = "UPDATE employees SET employee_id=?, full_name=?, org_id=?, position_id=?, level_id=?, status=? WHERE id=?";
                 $params = [$emp_id, $name, $org, $pos, $lvl, $status, $id];
-                $action_text = "mengubah data karyawan: $name";
             } else {
-                // Tambah Data Baru
                 $sql = "INSERT INTO employees (employee_id, full_name, org_id, position_id, level_id, status) VALUES (?, ?, ?, ?, ?, ?)";
                 $params = [$emp_id, $name, $org, $pos, $lvl, $status];
-                $action_text = "menambah karyawan baru: $name";
             }
-            $stmt = $pdo->prepare($sql);
-            if ($stmt->execute($params)) {
-                write_log($pdo, "Admin $action_text");
-                header("Location: index.php?msg=success");
-                exit();
+            $pdo->prepare($sql)->execute($params);
+            write_log($pdo, "Mengelola data karyawan: $name");
+            header("Location: index.php?msg=success");
+            exit();
+        } catch (PDOException $e) { $msg = $e->getMessage(); }
+    }
+
+    // B. Import CSV
+    if (isset($_POST['import_csv'])) {
+        $file = $_FILES['csv_file']['tmp_name'];
+        if ($file) {
+            $handle = fopen($file, "r");
+            $header = fgetcsv($handle, 1000, ","); // Lewati baris judul
+            
+            // Ambil mapping master data untuk efisiensi
+            $org_map = $pdo->query("SELECT id, org_name FROM master_organizations")->fetchAll(PDO::FETCH_KEY_PAIR);
+            $pos_map = $pdo->query("SELECT id, position_name FROM master_job_positions")->fetchAll(PDO::FETCH_KEY_PAIR);
+            $lvl_map = $pdo->query("SELECT id, level_name FROM master_job_levels")->fetchAll(PDO::FETCH_KEY_PAIR);
+            
+            $stmt = $pdo->prepare("INSERT INTO employees (employee_id, full_name, org_id, position_id, level_id, status) 
+                                   VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE 
+                                   full_name=VALUES(full_name), org_id=VALUES(org_id), 
+                                   position_id=VALUES(position_id), level_id=VALUES(level_id), status=VALUES(status)");
+            
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                if (count($data) < 6) continue;
+                
+                $emp_id = $data[0];
+                $full_name = $data[1];
+                $org_id = array_search($data[2], $org_map) ?: null;
+                $pos_id = array_search($data[3], $pos_map) ?: null;
+                $lvl_id = array_search($data[4], $lvl_map) ?: null;
+                $status = in_array($data[5], ['Active', 'Inactive']) ? $data[5] : 'Active';
+                
+                $stmt->execute([$emp_id, $full_name, $org_id, $pos_id, $lvl_id, $status]);
             }
-        } catch (PDOException $e) {
-            $msg = "Error: " . $e->getMessage();
+            fclose($handle);
+            write_log($pdo, "Melakukan import data karyawan via CSV");
+            header("Location: index.php?msg=imported");
+            exit();
         }
     }
 }
 
 // =========================================
-// 2. LOGIKA HAPUS (GET)
+// 3. LOGIKA HAPUS (GET)
 // =========================================
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $pdo->prepare("DELETE FROM employees WHERE id = ?")->execute([$id]);
-    write_log($pdo, "Admin menghapus data karyawan ID: $id");
+    write_log($pdo, "Menghapus data karyawan ID: $id");
     header("Location: index.php?msg=deleted");
     exit();
 }
 
 // =========================================
-// 3. PENGAMBILAN DATA
+// 4. PENGAMBILAN DATA
 // =========================================
-// Mengambil data master untuk dropdown
 $orgs = $pdo->query("SELECT * FROM master_organizations ORDER BY org_name ASC")->fetchAll();
 $positions = $pdo->query("SELECT * FROM master_job_positions ORDER BY position_name ASC")->fetchAll();
 $levels = $pdo->query("SELECT * FROM master_job_levels ORDER BY level_name ASC")->fetchAll();
 
-// Mengambil data karyawan dengan JOIN untuk mendapatkan label nama (bukan ID)
-$sql_employees = "SELECT e.*, o.org_name, p.position_name, l.level_name 
-                  FROM employees e 
-                  LEFT JOIN master_organizations o ON e.org_id = o.id 
-                  LEFT JOIN master_job_positions p ON e.position_id = p.id 
-                  LEFT JOIN master_job_levels l ON e.level_id = l.id 
-                  ORDER BY e.full_name ASC";
-$employees = $pdo->query($sql_employees)->fetchAll();
+$employees = $pdo->query("SELECT e.*, o.org_name, p.position_name, l.level_name 
+                          FROM employees e 
+                          LEFT JOIN master_organizations o ON e.org_id = o.id 
+                          LEFT JOIN master_job_positions p ON e.position_id = p.id 
+                          LEFT JOIN master_job_levels l ON e.level_id = l.id 
+                          ORDER BY e.full_name ASC")->fetchAll();
 
-// Ambil data untuk mode EDIT
 $edit_data = null;
 if (isset($_GET['edit'])) {
     $st = $pdo->prepare("SELECT * FROM employees WHERE id = ?");
@@ -102,7 +153,7 @@ if (isset($_GET['edit'])) {
         .badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
         .badge-active { background: #d1fae5; color: #065f46; }
         .badge-inactive { background: #fee2e2; color: #991b1b; }
-        .action-container { display: flex; gap: 8px; }
+        .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -110,23 +161,36 @@ if (isset($_GET['edit'])) {
 
     <main class="main-content">
         <div class="content-card">
-            <h2 style="color: var(--primary-blue); margin-bottom: 25px;">Employee Data Management</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="color: var(--primary-blue); margin: 0;">Employee Data Management</h2>
+                <div class="btn-group">
+                    <button onclick="document.getElementById('importBox').style.display='block'" class="btn-primary" style="background: #6366f1; width: auto; padding: 10px 20px;">
+                        <i class="material-symbols-rounded" style="vertical-align: middle;">upload_file</i> Import CSV
+                    </button>
+                    <a href="?export=excel" class="btn-primary" style="background: #16a34a; width: auto; padding: 10px 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="material-symbols-rounded">download</i> Export Excel
+                    </a>
+                </div>
+            </div>
+
+            <div id="importBox" class="form-card" style="display: none; border: 2px dashed #6366f1; background: #f5f3ff;">
+                <h4 style="margin-top: 0; color: #4338ca;">Import Data via CSV</h4>
+                <p style="font-size: 12px; color: #6366f1;">Format Kolom: <strong>NIK, Nama Lengkap, Organization, Position, Level, Status</strong></p>
+                <form method="POST" enctype="multipart/form-data" style="display: flex; gap: 10px; align-items: center;">
+                    <input type="file" name="csv_file" accept=".csv" class="form-control" required>
+                    <button type="submit" name="import_csv" class="btn-primary" style="width: auto;">Proses Import</button>
+                    <button type="button" onclick="document.getElementById('importBox').style.display='none'" class="btn-primary" style="background: #94a3b8; width: auto;">Batal</button>
+                </form>
+            </div>
 
             <div class="form-card">
                 <h4 style="margin-top: 0; margin-bottom: 20px;"><?= $edit_data ? 'Edit Data Karyawan' : 'Tambah Karyawan Baru' ?></h4>
                 <form method="POST">
                     <input type="hidden" name="id" value="<?= $edit_data['id'] ?? '' ?>">
                     <div class="grid-form">
-                        <div class="form-group">
-                            <label>NIK (Employee ID)</label>
-                            <input type="text" name="employee_id" class="form-control" value="<?= $edit_data['employee_id'] ?? '' ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" name="full_name" class="form-control" value="<?= $edit_data['full_name'] ?? '' ?>" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Organization</label>
+                        <div class="form-group"><label>NIK (Employee ID)</label><input type="text" name="employee_id" class="form-control" value="<?= $edit_data['employee_id'] ?? '' ?>" required></div>
+                        <div class="form-group"><label>Nama Lengkap</label><input type="text" name="full_name" class="form-control" value="<?= $edit_data['full_name'] ?? '' ?>" required></div>
+                        <div class="form-group"><label>Organization</label>
                             <select name="org_id" class="form-control" required>
                                 <option value="">-- Pilih --</option>
                                 <?php foreach($orgs as $o): ?>
@@ -134,8 +198,7 @@ if (isset($_GET['edit'])) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Job Position</label>
+                        <div class="form-group"><label>Job Position</label>
                             <select name="position_id" class="form-control" required>
                                 <option value="">-- Pilih --</option>
                                 <?php foreach($positions as $p): ?>
@@ -143,8 +206,7 @@ if (isset($_GET['edit'])) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Job Level</label>
+                        <div class="form-group"><label>Job Level</label>
                             <select name="level_id" class="form-control" required>
                                 <option value="">-- Pilih --</option>
                                 <?php foreach($levels as $l): ?>
@@ -152,8 +214,7 @@ if (isset($_GET['edit'])) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Status</label>
+                        <div class="form-group"><label>Status</label>
                             <select name="status" class="form-control" required>
                                 <option value="Active" <?= (isset($edit_data['status']) && $edit_data['status'] == 'Active') ? 'selected' : '' ?>>Active</option>
                                 <option value="Inactive" <?= (isset($edit_data['status']) && $edit_data['status'] == 'Inactive') ? 'selected' : '' ?>>Inactive</option>
@@ -161,55 +222,34 @@ if (isset($_GET['edit'])) {
                         </div>
                     </div>
                     <div style="margin-top: 20px; display: flex; gap: 10px;">
-                        <button type="submit" name="save_employee" class="btn-primary" style="width: auto; padding: 10px 30px;">
-                            <?= $edit_data ? 'Update Karyawan' : 'Simpan Karyawan' ?>
-                        </button>
-                        <?php if($edit_data): ?>
-                            <a href="index.php" class="btn-primary" style="background: #94a3b8; width: auto; padding: 10px 30px; text-decoration: none;">Batal</a>
-                        <?php endif; ?>
+                        <button type="submit" name="save_employee" class="btn-primary" style="width: auto; padding: 10px 30px;">Simpan</button>
+                        <?php if($edit_data): ?><a href="index.php" class="btn-primary" style="background: #94a3b8; width: auto; padding: 10px 30px; text-decoration: none;">Batal</a><?php endif; ?>
                     </div>
                 </form>
             </div>
 
             <table class="data-table">
                 <thead>
-                    <tr>
-                        <th width="50">No</th>
-                        <th>NIK</th>
-                        <th>Nama Lengkap</th>
-                        <th>Organization</th>
-                        <th>Position</th>
-                        <th>Level</th>
-                        <th>Status</th>
-                        <th width="150">Aksi</th>
-                    </tr>
+                    <tr><th>No</th><th>NIK</th><th>Nama Lengkap</th><th>Organization</th><th>Position</th><th>Level</th><th>Status</th><th width="150">Aksi</th></tr>
                 </thead>
                 <tbody>
-                    <?php if(count($employees) > 0): ?>
-                        <?php $no = 1; foreach($employees as $e): ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><strong><?= $e['employee_id'] ?></strong></td>
-                            <td><?= htmlspecialchars($e['full_name']) ?></td>
-                            <td><?= $e['org_name'] ?></td>
-                            <td><?= $e['position_name'] ?></td>
-                            <td><?= $e['level_name'] ?></td>
-                            <td>
-                                <span class="badge <?= ($e['status'] == 'Active') ? 'badge-active' : 'badge-inactive' ?>">
-                                    <?= $e['status'] ?>
-                                </span>
-                            </td>
-                            <td>
-                                <div class="action-container">
-                                    <a href="?edit=<?= $e['id'] ?>" class="btn-primary" style="padding: 5px 10px; font-size: 11px; background: #eef2ff; color: #4338ca;">Edit</a>
-                                    <a href="?delete=<?= $e['id'] ?>" class="btn-primary" style="padding: 5px 10px; font-size: 11px; background: #fff1f2; color: #be123c;" onclick="return confirm('Hapus karyawan ini?')">Hapus</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr><td colspan="8" style="text-align: center; padding: 20px; color: #94a3b8;">Belum ada data karyawan.</td></tr>
-                    <?php endif; ?>
+                    <?php $no = 1; foreach($employees as $e): ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><strong><?= $e['employee_id'] ?></strong></td>
+                        <td><?= htmlspecialchars($e['full_name']) ?></td>
+                        <td><?= $e['org_name'] ?></td>
+                        <td><?= $e['position_name'] ?></td>
+                        <td><?= $e['level_name'] ?></td>
+                        <td><span class="badge <?= ($e['status'] == 'Active') ? 'badge-active' : 'badge-inactive' ?>"><?= $e['status'] ?></span></td>
+                        <td>
+                            <div style="display: flex; gap: 5px;">
+                                <a href="?edit=<?= $e['id'] ?>" class="btn-primary" style="padding: 5px 10px; font-size: 11px; background: #eef2ff; color: #4338ca; text-decoration: none;">Edit</a>
+                                <a href="?delete=<?= $e['id'] ?>" class="btn-primary" style="padding: 5px 10px; font-size: 11px; background: #fff1f2; color: #be123c; text-decoration: none;" onclick="return confirm('Hapus?')">Hapus</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
